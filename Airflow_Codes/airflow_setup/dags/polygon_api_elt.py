@@ -1,12 +1,8 @@
 import os
 from datetime import datetime, timedelta
 from airflow import DAG
-from airflow.operators.bash import BashOperator
 from airflow.utils.task_group import TaskGroup
 from airflow.operators.empty import EmptyOperator
-from airflow.operators.python import PythonOperator
-from airflow.providers.postgres.operators.postgres import PostgresOperator
-from airflow.providers.postgres.hooks.postgres import PostgresHook
 from web.operators.plg_api_to_pg_to_gcs import PolygonToPGOperator
 from airflow.providers.dbt.cloud.operators.dbt import DbtCloudRunJobOperator
 from airflow.providers.google.cloud.transfers.gcs_to_bigquery import GCSToBigQueryOperator
@@ -160,101 +156,3 @@ with DAG(
 
     start >> extract_data_tasks >> get_data_tasks >> load_data_tasks
 
-
-    # extract_data = PolygonToPGOperator(
-    #     task_id="extract_data_from_API_and_load_to_Postgres",
-    #     key=KEY,
-    #     table=TABLE,
-    #     type_of_data=TYPE_OF_DATA,
-    #     destination_path=DESTINATION_PATH,
-    #     yesterday=YESTERDAY,
-    #     time=TIME,
-    # )
-
-    # get_data = PostgresToGCSOperator(
-    #     task_id="transfer_data_from_Postgres_to_GCS",
-    #     postgres_conn_id='postgres_default',
-    #     sql=f"SELECT * FROM {TABLE} WHERE date = '{YESTERDAY}'",
-    #     bucket=DESTINATION_BUCKET,
-    #     filename="polygon/"+DESTINATION_PATH.replace('.csv', '.json'),
-    #     gzip=False,
-    # )
-
-    # load_gcs_to_bigquery =  GCSToBigQueryOperator(
-    #     task_id = "load_gcs_to_bigquery",
-    #     bucket=f"{DESTINATION_BUCKET}", #BUCKET
-    #     source_objects=[f"polygon/{DESTINATION_PATH.replace('.csv', '.json')}"], # SOURCE OBJECT
-    #     destination_project_dataset_table=f"{DATASET}.{TABLE}", # `nyc.green_dataset_data` i.e table name
-    #     autodetect=True, #DETECT SCHEMA : the columns and the type of data in each columns of the CSV file
-    #     write_disposition="WRITE_APPEND", # command to update table from the  latest (or last row) row number upon every job run or task run
-    #     source_format="NEWLINE_DELIMITED_JSON",
-    # )
-
-    # delete_file = BashOperator(
-    #      task_id = "delete_file",
-    #      bash_command = f'rm {AIRFLOW_HOME}/{DESTINATION_PATH}'
-    # )
- 
-    # start >> extract_data #>> get_data >> load_gcs_to_bigquery >> delete_file
-    
-
-
-# >> python_task
-# def copy_data_to_postgres_table(**kwargs):
-
-#     # Convert the CSV string to a file-like object
-#     data_file = DESTINATION_PATH
-
-#     # Specify the target PostgreSQL table
-#     target_table = TABLE
-#     sql_command = f"COPY {target_table} FROM STDIN CSV"
-
-#     # Instantiate the PostgreSQL hook
-#     postgres_hook = PostgresHook(postgres_conn_id='postgres_default')
-
-#     # Execute the copy_expert method
-#     postgres_hook.copy_expert(sql_command, data_file)
-    
-# # Define a PythonOperator to execute the my_python_function function
-# python_task = PythonOperator(
-#     task_id='execute_copy_of_data_to_postgres_table',
-#     python_callable=copy_data_to_postgres_table,
-#     dag=dag,
-# )
-# ingest = PostgresHook.copy_expert(f"COPY {TABLE} FROM STDIN", DESTINATION_PATH)
-
-# get_birth_date = PostgresOperator(
-#     task_id="get_birth_date",
-#     postgres_conn_id="postgres_default",
-#     sql="sql/birth_date.sql",
-#     params={"begin_date": "2020-01-01", "end_date": "2020-12-31"},
-# )
-
-# get_data = PostgresToGCSOperator(
-#     task_id="get_data",
-#     postgres_conn_id=CONNECTION_ID,
-#     sql=SQL_SELECT,
-#     bucket=BUCKET_NAME,
-#     filename=FILE_NAME,
-#     gzip=False,
-# )
-
-# load_gcs_to_bigquery =  GCSToBigQueryOperator(
-#     task_id = "load_gcs_to_bigquery",
-#     bucket=f"{BUCKET}", #BUCKET
-#     source_objects=[f"{OBJECT}.parquet"], # SOURCE OBJECT
-#     destination_project_dataset_table=f"{DATASET}.{OBJECT}", # `nyc.green_dataset_data` i.e table name
-#     autodetect=True, #DETECT SCHEMA : the columns and the type of data in each columns of the CSV file
-#     write_disposition="WRITE_APPEND", # command to update table from the  latest (or last row) row number upon every job run or task run
-#     source_format="PARQUET",
-# )
-
-# trigger_job_run = DbtCloudRunJobOperator(
-#     task_id="trigger_job_run_for_eviction",
-#     #dbt_cloud_conn_id = "eviction_dbt_job",
-#     job_id=451408,
-#     check_interval=10,
-#     timeout=300,
-# )
-
-# end = EmptyOperator(task_id="end")
