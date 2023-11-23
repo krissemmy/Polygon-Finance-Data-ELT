@@ -1,4 +1,6 @@
-Welcome to your new dbt project!
+Welcome to my Polygon Finance ElT data pipeline project!
+
+Check out the Airflow setup instructions [here](https://github.com/krissemmy/Polygon-Finance-Data-ELT/blob/main/Airflow_Codes/airflow_setup/airflow_setup.md)
 
 ### Using the starter project
 
