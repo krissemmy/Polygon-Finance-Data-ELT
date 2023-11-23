@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Contains Polygon Finance data of Stock, Forex and Crypto data"
+    tables:
+      - name: polygon_stock
+        description: "Data about the daily open, high, low, and close (OHLC) for the entire stocks/equities markets."
+      - name: polygon_forex
+        description: "Data about the daily open, high, low, and close (OHLC) for the entire forex markets."
+      - name: polygon_crypto
+        description: "Data about the daily open, high, low, and close (OHLC) for the entire cryptocurrency markets."

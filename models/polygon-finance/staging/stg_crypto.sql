@@ -1,0 +1,29 @@
+WITH source AS (
+
+    SELECT * FROM {{ source('raw', 'polygon_crypto') }}
+
+),
+
+renamed AS (
+
+    SELECT
+        GENERATE_UUID() as crypto_id,
+        symbol,
+        request_id,
+        date,
+        timestamp_unix,
+        open_price,
+        close_price,
+        lowest_price,
+        highest_price,
+        adjusted,
+        number_of_transaction,
+        trading_volume,
+        volume_weighted
+
+    FROM source
+
+)
+
+SELECT * 
+FROM renamed

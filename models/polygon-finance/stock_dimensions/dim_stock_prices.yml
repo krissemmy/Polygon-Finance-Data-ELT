@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: dim_stock_prices
+    description: "Dimension table that captures open, close, low, and high prices for each stock on a given date."
+    columns:
+      - name: price_id
+        description: "The Primary key of the table"
+        tests:
+          - not_null:
+              severity: error
+          - unique:
+              severity: error
+        constraints:
+          - type: not_null
+
+      - name: stock_id
+        description: "Foreign key been refrenced from the primary key of fact_stocks table"
+        tests:
+          - not_null:
+              severity: error
+          - unique:
+              severity: error
+        constraints:
+          - type: not_null
+
+      - name: open_price
+        description: "Field that describes the open price for the symbol in the given time period."
+        data_type: FLOAT
+
+      - name: close_price
+        description: " The close price for the symbol in the given time period."
+        data_type: FLOAT
+
+      - name: lowest_price
+        description: "Field that describes the lowest price for the symbol in the given time period."
+        data_type: FLOAT
+
+      - name: highest_price
+        description: "Field that describes the highest price for the symbol in the given time period."
+        data_type: FLOAT
+
+      - name: adjusted
+        description: "Field that describes whether or not a response was adjusted for splits."
+        data_type: BOOLEAN
