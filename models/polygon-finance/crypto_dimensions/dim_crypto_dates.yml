@@ -1,0 +1,50 @@
+## Testing, documentation, Referencing and configuration
+version: 2
+
+models:
+  - name: dim_crypto_dates
+    description: "date table"
+    columns:
+      - name: date_key
+        description: "The primary key of the date table"
+        tests:
+          - not_null:
+              severity: error
+          - unique:
+              severity: error
+
+      - name: request_id
+        description: "The request id assigned by the source server."
+
+      - name: date
+        description: "The date the result was generated."
+
+      - name: year
+        description: "the year the result was generated."
+
+      - name: month
+        description: "the month the result was generated."
+
+      - name: day
+        description: "the day the result was generated."
+
+      - name: weekday
+        description: "the weekday the result was generated."
+
+      - name: quarter
+        description: "the quarter in a year, the result was generated."
+
+      - name: week_number
+        description: "the week in number, that the result was generated."
+
+      - name: weekday_weekend
+        description: "Tells if it was on a weekday or weekend the result was generated"
+
+      - name: holiday
+        description: "Tells if it was on a Holiday or not, that the result was generated"
+
+      - name: leap_year
+        description: "Tells if it was on a leap year or not, the result was generated"
+
+      - name: season
+        description: "Tells the season the result was generated"
