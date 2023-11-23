@@ -5,7 +5,7 @@ models:
   - name: dim_forex_dates
     description: "date table"
     columns:
-      - name: date_key
+      - name: date_id
         description: "The primary key of the date table"
         tests:
           - not_null:

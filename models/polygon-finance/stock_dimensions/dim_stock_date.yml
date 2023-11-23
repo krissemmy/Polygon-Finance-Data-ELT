@@ -5,13 +5,15 @@ models:
   - name: dim_stock_dates
     description: "date table"
     columns:
-      - name: date_key
+      - name: date_id
         description: "The primary key of the date table"
         tests:
           - not_null:
               severity: error
           - unique:
               severity: error
+        constraints:
+          - type: not_null
 
       - name: request_id
         description: "The request id assigned by the source server."

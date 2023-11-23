@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: fact_stock_trading_volume
+    description: "Fact table detailing the trading volume of each trade"
+    columns:
+      - name: stock_id
+        description: "Primary key of stock table"
+        data_type: STRING
+
+      - name: date_id
+        description: "foreign key belonging to dim_stock_dates"
+        data_type: STRING
+
+      - name: price_id
+        description: "foreign key belonging to dim_stock_prices"
+        data_type: STRING
+
+      - name: symbol
+        description: "Symbol been traded"
+        data_type: STRING
+
+      - name: trading_volume
+        description: "The trading volume for a stock"
+        data_type: FLOAT

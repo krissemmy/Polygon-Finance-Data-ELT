@@ -1,8 +1,8 @@
 version: 2
 
 models:
-  - name: dim_stock_prices
-    description: "Dimension table that captures open, close, low, and high prices for each stock on a given date."
+  - name: dim_crypto_prices
+    description: "Dimension table that captures open, close, low, and high prices for each crypto currency on a given date."
     columns:
       - name: price_id
         description: "The Primary key of the table"
@@ -14,7 +14,7 @@ models:
         constraints:
           - type: not_null
 
-      - name: stock_id
+      - name: crypto_id
         description: "Foreign key been refrenced from the primary key of fact_stocks table"
         tests:
           - not_null:

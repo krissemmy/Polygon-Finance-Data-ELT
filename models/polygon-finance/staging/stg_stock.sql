@@ -7,7 +7,7 @@ WITH source AS (
 renamed AS (
 
     SELECT
-        GENERATE_UUID() as stock_key,
+        GENERATE_UUID() as stock_id,
         symbol,
         request_id,
         date,
@@ -27,4 +27,3 @@ renamed AS (
 
 SELECT * 
 FROM renamed
-

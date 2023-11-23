@@ -7,7 +7,7 @@ sources:
       - name: stg_stock
         description: "Data about the daily open, high, low, and close (OHLC) for the entire stocks/equities markets."
         columns:
-          - name: unique_key
+          - name: stock_id
             description: "Field that uniquely identifies each entry."
             tests:
               - not_null:
@@ -66,7 +66,7 @@ sources:
       - name: stg_forex
         description: "Data about the daily open, high, low, and close (OHLC) for the entire forex markets."
         columns:
-          - name: unique_key
+          - name: forex_id
             description: "Field that uniquely identifies each entry."
             tests:
             - not_null:
@@ -125,7 +125,7 @@ sources:
       - name: stg_crypto
         description: "Data about the daily open, high, low, and close (OHLC) for the entire cryptocurrency markets."
         columns:
-          - name: unique_key
+          - name: crypto_id
             description: "Field that uniquely identifies each entry."
             tests:
             - not_null:

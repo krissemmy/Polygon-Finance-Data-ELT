@@ -20,7 +20,7 @@ WITH dim_date AS (
         END AS season
     FROM {{ ref("stg_forex") }}
 )
-SELECT GENERATE_UUID() as date_key, *
+SELECT GENERATE_UUID() as date_id, *
 FROM (
     SELECT DISTINCT *
     FROM dim_date
