@@ -1,10 +1,5 @@
-{{ config(
-    materialized='incremental',
-    unique_key='symbol'
-) }}
 SELECT
     sc.symbol,
-    dcd.date,
     AVG(dcp.open_price) AS avg_open_price,
     AVG(dcp.close_price) AS avg_close_price,
     AVG(dcp.lowest_price) AS avg_lowest_price,
@@ -15,4 +10,4 @@ LEFT JOIN {{ ref('dim_crypto_dates') }} dcd
 ON sc.date = dcd.date
 LEFT JOIN {{ ref("dim_crypto_prices") }} dcp
 ON sc.id = dcp.crypto_id
-GROUP BY sc.symbol, dcd.date
+GROUP BY sc.symbol

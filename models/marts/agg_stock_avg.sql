@@ -1,6 +1,5 @@
 SELECT
     ss.symbol,
-    dsd.date,
     AVG(dsp.open_price) AS avg_open_price,
     AVG(dsp.close_price) AS avg_close_price,
     AVG(dsp.lowest_price) AS avg_lowest_price,
@@ -11,4 +10,4 @@ LEFT JOIN {{ ref('dim_stock_dates') }} dsd
 ON ss.date = dsd.date
 LEFT JOIN {{ ref("dim_stock_prices") }} dsp
 ON ss.id = dsp.stock_id
-GROUP BY ss.symbol, dsd.date
+GROUP BY ss.symbol
