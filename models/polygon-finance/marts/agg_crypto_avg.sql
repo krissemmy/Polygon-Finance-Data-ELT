@@ -12,7 +12,7 @@ SELECT
     AVG(CAST(sc.number_of_transaction AS INTEGER)) AS avg_number_of_transaction
 FROM {{ ref('stg_crypto') }} sc
 LEFT JOIN {{ ref('dim_crypto_dates') }} dcd
-ON sc.request_id = dcd.request_id
+ON sc.date = dcd.date
 LEFT JOIN {{ ref("dim_crypto_prices") }} dcp
 ON sc.crypto_id = dcp.crypto_id
 GROUP BY sc.symbol, dcd.date

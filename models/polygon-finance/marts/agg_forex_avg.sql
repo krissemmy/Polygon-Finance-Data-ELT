@@ -12,7 +12,7 @@ SELECT
     AVG(CAST(sf.number_of_transaction AS INTEGER)) AS avg_number_of_transaction
 FROM {{ ref('stg_forex') }} sf
 LEFT JOIN {{ ref('dim_forex_dates') }} dfd
-ON sf.request_id = dfd.request_id
+ON sf.date = dfd.date
 LEFT JOIN {{ ref("dim_forex_prices") }} dfp
 ON sf.forex_id = dfp.forex_id
 GROUP BY sf.symbol, dfd.date

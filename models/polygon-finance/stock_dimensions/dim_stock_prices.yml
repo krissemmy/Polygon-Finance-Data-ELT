@@ -39,6 +39,10 @@ models:
       - name: highest_price
         description: "Field that describes the highest price for the symbol in the given time period."
         data_type: FLOAT
+        
+      - name: number_of_transactions
+        description: "Field that describes the number of transactions each day."
+        data_type: INTEGER
 
       - name: adjusted
         description: "Field that describes whether or not a response was adjusted for splits."

@@ -40,6 +40,10 @@ models:
         description: "Field that describes the highest price for the symbol in the given time period."
         data_type: FLOAT
 
+      - name: number_of_transactions
+        description: "Field that describes the number of transactions traded per day of that crypto currency"
+        data_type: INTEGER
+
       - name: adjusted
         description: "Field that describes whether or not a response was adjusted for splits."
         data_type: BOOLEAN
