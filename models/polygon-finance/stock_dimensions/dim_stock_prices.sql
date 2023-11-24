@@ -1,6 +1,6 @@
 SELECT
     GENERATE_UUID() AS id,
-    stock_id,
+    id AS stock_id,
     open_price,
     close_price,
     lowest_price,

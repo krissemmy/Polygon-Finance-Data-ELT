@@ -4,7 +4,7 @@
 ) }}
 SELECT
     GENERATE_UUID() AS id,
-    crypto_id,
+    id AS crypto_id,
     open_price,
     close_price,
     lowest_price,

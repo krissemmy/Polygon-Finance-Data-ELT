@@ -1,7 +1,3 @@
-{{ config(
-    materialized='incremental',
-    unique_key='symbol'
-) }}
 SELECT
     ss.symbol,
     dsd.date,
@@ -14,5 +10,5 @@ FROM {{ ref('stg_stock') }} ss
 LEFT JOIN {{ ref('dim_stock_dates') }} dsd
 ON ss.date = dsd.date
 LEFT JOIN {{ ref("dim_stock_prices") }} dsp
-ON ss.stock_id = dsp.stock_id
+ON ss.id = dsp.stock_id
 GROUP BY ss.symbol, dsd.date

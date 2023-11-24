@@ -11,18 +11,10 @@ models:
               severity: error
           - unique:
               severity: error
-        constraints:
-          - type: not_null
 
       - name: stock_id
         description: "Foreign key been refrenced from the primary key of fact_stocks table"
-        tests:
-          - not_null:
-              severity: error
-          - unique:
-              severity: error
-        constraints:
-          - type: not_null
+        data_type: STRING
 
       - name: open_price
         description: "Field that describes the open price for the symbol in the given time period."

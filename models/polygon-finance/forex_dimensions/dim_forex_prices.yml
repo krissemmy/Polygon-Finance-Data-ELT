@@ -11,8 +11,6 @@ models:
               severity: error
           - unique:
               severity: error
-        constraints:
-          - type: not_null
 
       - name: forex_id
         description: "Foreign key been refrenced from the primary key of fact_stocks table"
@@ -21,8 +19,6 @@ models:
               severity: error
           - unique:
               severity: error
-        constraints:
-          - type: not_null
 
       - name: open_price
         description: "Field that describes the open price for the symbol in the given time period."

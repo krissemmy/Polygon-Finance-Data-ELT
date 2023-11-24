@@ -25,24 +25,5 @@ renamed AS (
 
 )
 
-
-SELECT
-    CASE 
-        WHEN f.id IS NULL THEN t.id
-        ELSE GENERATE_UUID()  
-    END AS id,
-    t.request_id,
-    t.symbol,
-    t.date,
-    t.timestamp_unix,
-    t.open_price,
-    t.close_price,
-    t.lowest_price,
-    t.highest_price,
-    t.adjusted,
-    CAST(t.number_of_transaction AS INTEGER) AS number_of_transaction,
-    t.trading_volume,
-    t.volume_weighted
-FROM renamed t
-LEFT JOIN {{ ref('stg_stock_1') }} f
-ON t.id = f.id
+SELECT * 
+FROM renamed

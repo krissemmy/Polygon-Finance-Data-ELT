@@ -7,10 +7,19 @@ models:
       - name: stock_id
         description: "Primary key of stock table"
         data_type: STRING
+        tests:
+          - not_null:
+              severity: error
+          - unique:
+              severity: error
 
       - name: date
         description: "foreign key belonging to dim_stock_dates"
         data_type: STRING
+        tests:
+          - relationships:
+              to: ref('dim_stock_dates')
+              field: date
 
       - name: price_id
         description: "foreign key belonging to dim_stock_prices"

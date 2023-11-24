@@ -17,7 +17,7 @@ renamed AS (
         lowest_price,
         highest_price,
         adjusted,
-        number_of_transaction,
+        CAST(number_of_transaction AS INTEGER) AS number_of_transaction,
         trading_volume,
         volume_weighted
 
@@ -25,5 +25,24 @@ renamed AS (
 
 )
 
-SELECT * 
-FROM renamed
+
+SELECT
+    CASE 
+        WHEN f.id IS NULL THEN t.id
+        ELSE GENERATE_UUID()  
+    END AS id,
+    t.request_id,
+    t.symbol,
+    t.date,
+    t.timestamp_unix,
+    t.open_price,
+    t.close_price,
+    t.lowest_price,
+    t.highest_price,
+    t.adjusted,
+    CAST(t.number_of_transaction AS INTEGER) AS number_of_transaction,
+    t.trading_volume,
+    t.volume_weighted
+FROM renamed t
+LEFT JOIN {{ ref('stg_forex_1') }} f
+ON t.id = f.id
