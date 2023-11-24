@@ -15,51 +15,63 @@ sources:
               - unique:
                   severity: error
             data_type: STRING
+          
           - name: symbol
             description: "Field that describes the exchange symbol that this item is traded under."
             tests:
             - not_null:
                 severity: error
             data_type: STRING
+          
           - name: request_id
             description: "Field that contains request id assigned by the server."
             tests:
             - not_null:
                 severity: warn
             data_type: STRING
+          
           - name: date
             description: "Field that tells the date the result was generated."
             tests:
             - not_null:
                 severity: error
             data_type: DATE
+          
           - name: timestamp_unix
             description: "Field that contains the Unix Msec timestamp for the start of the aggregate window."
             tests:
             - not_null:
                 severity: warn
             data_type: INTEGER
+          
           - name: open_price
             description: "Field that describes the open price for the symbol in the given time period."
             data_type: FLOAT
+          
           - name: close_price
             description: " The close price for the symbol in the given time period."
             data_type: FLOAT
+          
           - name: lowest_price
             description: "Field that describes the lowest price for the symbol in the given time period."
             data_type: FLOAT
+          
           - name: highest_price
             description: "Field that describes the highest price for the symbol in the given time period."
             data_type: FLOAT
+          
           - name: adjusted
             description: "Field that describes whether or not a response was adjusted for splits."
             data_type: BOOLEAN
+          
           - name: number_of_transaction
             description: "Field that describes the number of transactions each day."
             data_type: INTEGER
+          
           - name: trading_volume
             description: "Field for the trading volume of the symbol in the given time period."
             data_type: FLOAT
+          
           - name: volume_weighted
             description: "Field that shows the volume weighted average price."
             data_type: FLOAT
@@ -74,51 +86,63 @@ sources:
             - unique:
                 severity: error
             data_type: STRING
+          
           - name: symbol
             description: "Field that describes the exchange symbol that this item is traded under."
             tests:
             - not_null:
                 severity: error
             data_type: STRING
+          
           - name: request_id
             description: "Field that contains request id assigned by the server."
             tests:
             - not_null:
                 severity: warn
             data_type: STRING
+          
           - name: date
             description: "Field that tells the date the result was generated."
             tests:
             - not_null:
                 severity: error
             data_type: DATE
+          
           - name: timestamp_unix
             description: "Field that contains the Unix Msec timestamp for the start of the aggregate window."
             tests:
             - not_null:
                 severity: warn
             data_type: INTEGER
+          
           - name: open_price
             description: "Field that describes the open price for the symbol in the given time period."
             data_type: FLOAT
+          
           - name: close_price
             description: " The close price for the symbol in the given time period."
             data_type: FLOAT
+          
           - name: lowest_price
             description: "Field that describes the lowest price for the symbol in the given time period."
             data_type: FLOAT
+          
           - name: highest_price
             description: "Field that describes the highest price for the symbol in the given time period."
             data_type: FLOAT
+          
           - name: adjusted
             description: "Field that describes whether or not a response was adjusted for splits."
             data_type: BOOLEAN
+          
           - name: number_of_transaction
             description: "Field that describes the number of transactions each day."
             data_type: INTEGER
+          
           - name: trading_volume
             description: "Field for the trading volume of the symbol in the given time period."
             data_type: FLOAT
+          
           - name: volume_weighted
             description: "Field that shows the volume weighted average price."
             data_type: FLOAT
@@ -133,51 +157,63 @@ sources:
             - unique:
                 severity: error
             data_type: STRING
+
           - name: symbol
             description: "Field that describes the exchange symbol that this item is traded under."
             tests:
             - not_null:
                 severity: error
             data_type: STRING
+          
           - name: request_id
             description: "Field that contains request id assigned by the server."
             tests:
             - not_null:
                 severity: warn
             data_type: STRING
+          
           - name: date
             description: "Field that tells the date the result was generated."
             tests:
             - not_null:
                 severity: error
             data_type: DATE
+          
           - name: timestamp_unix
             description: "Field that contains the Unix Msec timestamp for the start of the aggregate window."
             tests:
             - not_null:
                 severity: warn
             data_type: INTEGER
+          
           - name: open_price
             description: "Field that describes the open price for the symbol in the given time period."
             data_type: FLOAT
+          
           - name: close_price
             description: " The close price for the symbol in the given time period."
             data_type: FLOAT
+          
           - name: lowest_price
             description: "Field that describes the lowest price for the symbol in the given time period."
             data_type: FLOAT
+          
           - name: highest_price
             description: "Field that describes the highest price for the symbol in the given time period."
             data_type: FLOAT
+          
           - name: adjusted
             description: "Field that describes whether or not a response was adjusted for splits."
             data_type: BOOLEAN
+          
           - name: number_of_transaction
             description: "Field that describes the number of transactions each day."
             data_type: INTEGER
+          
           - name: trading_volume
             description: "Field for the trading volume of the symbol in the given time period."
             data_type: FLOAT
+          
           - name: volume_weighted
             description: "Field that shows the volume weighted average price."
             data_type: FLOAT

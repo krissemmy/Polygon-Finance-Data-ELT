@@ -5,19 +5,13 @@ models:
   - name: dim_forex_dates
     description: "date table"
     columns:
-      - name: date_id
-        description: "The primary key of the date table"
+      - name: date
+        description: "The date the forex was traded and also the primary key of the date table"
         tests:
           - not_null:
               severity: error
           - unique:
               severity: error
-
-      - name: request_id
-        description: "The request id assigned by the source server."
-
-      - name: date
-        description: "The date the result was generated."
 
       - name: year
         description: "the year the result was generated."

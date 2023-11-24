@@ -12,7 +12,7 @@ SELECT
     AVG(CAST(ss.number_of_transaction AS INTEGER)) AS avg_number_of_transaction
 FROM {{ ref('stg_stock') }} ss
 LEFT JOIN {{ ref('dim_stock_dates') }} dsd
-ON ss.request_id = dsd.request_id
+ON ss.date = dsd.date
 LEFT JOIN {{ ref("dim_stock_prices") }} dsp
 ON ss.stock_id = dsp.stock_id
 GROUP BY ss.symbol, dsd.date

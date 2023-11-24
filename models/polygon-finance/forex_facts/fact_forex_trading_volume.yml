@@ -8,12 +8,16 @@ models:
         description: "Primary key of stock table"
         data_type: STRING
 
-      - name: date_id
+      - name: date
         description: "foreign key belonging to dim_stock_dates"
-        data_type: STRING
+        data_type: DATE
 
       - name: price_id
         description: "foreign key belonging to dim_stock_prices"
+        data_type: STRING
+
+      - name: request_id
+        description: "Field that contains request id assigned by the server."
         data_type: STRING
 
       - name: symbol
@@ -21,5 +25,9 @@ models:
         data_type: STRING
 
       - name: trading_volume
-        description: "The trading volume for a stock"
+        description: "Field for the trading volume of the symbol in the given time period."
+        data_type: FLOAT
+
+      - name: volume_weighted
+        description: "Field that shows the volume weighted average price."
         data_type: FLOAT

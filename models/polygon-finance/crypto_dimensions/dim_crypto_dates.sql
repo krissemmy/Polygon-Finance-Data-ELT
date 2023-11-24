@@ -1,6 +1,9 @@
+{{ config(
+    materialized='incremental',
+    unique_key='date'
+) }}
 WITH dim_date AS (
     SELECT
-        request_id,
         date,
         EXTRACT(YEAR FROM date) AS year,
         EXTRACT(MONTH FROM date) AS month,
@@ -20,8 +23,6 @@ WITH dim_date AS (
         END AS season
     FROM {{ ref("stg_crypto") }}
 )
-SELECT GENERATE_UUID() as date_id, *
-FROM (
-    SELECT DISTINCT *
-    FROM dim_date
-)
+
+SELECT DISTINCT *
+FROM dim_date
