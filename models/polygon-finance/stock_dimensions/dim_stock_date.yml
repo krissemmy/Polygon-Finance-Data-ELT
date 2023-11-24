@@ -12,8 +12,6 @@ models:
               severity: error
           - unique:
               severity: error
-        constraints:
-          - type: not_null
 
       - name: year
         description: "the year the result was generated."

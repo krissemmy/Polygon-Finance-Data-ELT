@@ -15,6 +15,9 @@ sources:
               - unique:
                   severity: error
             data_type: STRING
+            constraints:
+              - type: not_null
+              - type: unique
           
           - name: symbol
             description: "Field that describes the exchange symbol that this item is traded under."
