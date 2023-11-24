@@ -7,7 +7,7 @@ WITH source AS (
 renamed AS (
 
     SELECT
-        GENERATE_UUID() as crypto_id,
+        GENERATE_UUID() as id,
         symbol,
         request_id,
         date,

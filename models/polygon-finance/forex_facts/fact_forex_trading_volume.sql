@@ -3,9 +3,9 @@
     unique_key='forex_id'
 ) }}
 SELECT
-    sf.forex_id,
+    sf.id AS forex_id,
     dfd.date,
-    dfp.price_id,
+    dfp.id AS price_id,
     sf.request_id,
     sf.symbol,
     sf.trading_volume,
