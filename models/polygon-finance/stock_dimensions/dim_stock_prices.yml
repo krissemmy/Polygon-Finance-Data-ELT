@@ -4,7 +4,7 @@ models:
   - name: dim_stock_prices
     description: "Dimension table that captures open, close, low, and high prices for each stock on a given date."
     columns:
-      - name: price_id
+      - name: id
         description: "The Primary key of the table"
         tests:
           - not_null:

@@ -3,9 +3,9 @@
     unique_key='crypto_id'
 ) }}
 SELECT
-    sc.crypto_id,
+    sc.id AS crypto_id,
     dcd.date,
-    dcp.price_id,
+    dcp.id AS price_id,
     sc.request_id,
     sc.symbol,
     sc.trading_volume,

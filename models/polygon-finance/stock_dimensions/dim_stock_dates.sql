@@ -1,3 +1,7 @@
+{{ config(
+    materialized='incremental',
+    unique_key='date'
+) }}
 WITH dim_date AS (
     SELECT
         date,

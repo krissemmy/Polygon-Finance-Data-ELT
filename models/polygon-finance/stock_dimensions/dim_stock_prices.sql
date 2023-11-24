@@ -1,5 +1,5 @@
 SELECT
-    GENERATE_UUID() AS price_id,
+    GENERATE_UUID() AS id,
     stock_id,
     open_price,
     close_price,

@@ -3,7 +3,7 @@
     unique_key='crypto_id'
 ) }}
 SELECT
-    GENERATE_UUID() AS price_id,
+    GENERATE_UUID() AS id,
     crypto_id,
     open_price,
     close_price,
