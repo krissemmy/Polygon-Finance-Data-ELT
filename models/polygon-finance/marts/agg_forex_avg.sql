@@ -14,5 +14,5 @@ FROM {{ ref('stg_forex') }} sf
 LEFT JOIN {{ ref('dim_forex_dates') }} dfd
 ON sf.date = dfd.date
 LEFT JOIN {{ ref("dim_forex_prices") }} dfp
-ON sf.forex_id = dfp.forex_id
+ON sf.id = dfp.forex_id
 GROUP BY sf.symbol, dfd.date

@@ -12,7 +12,7 @@ models:
           - unique:
               severity: error
 
-      - name: request_id
+      - name: stock_id
         description: "Foreign key been refrenced from the primary key of fact_stocks table"
         data_type: STRING
 

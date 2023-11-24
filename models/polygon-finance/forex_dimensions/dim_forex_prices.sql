@@ -4,7 +4,7 @@
 ) }}
 SELECT
     GENERATE_UUID() AS id,
-    forex_id,
+    id AS forex_id,
     open_price,
     close_price,
     lowest_price,

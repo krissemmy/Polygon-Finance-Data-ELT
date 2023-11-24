@@ -14,4 +14,4 @@ FROM {{ ref('stg_crypto') }} sc
 INNER JOIN {{ ref('dim_crypto_dates') }} dcd
 ON sc.date = dcd.date
 INNER JOIN {{ ref("dim_crypto_prices") }} dcp
-ON sc.crypto_id = dcp.crypto_id
+ON sc.id = dcp.crypto_id
