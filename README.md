@@ -9,8 +9,11 @@ This project involves the creation of an Extract, Load, Transform (ELT) data pip
 ## Project Presentation
 Do check out the below links that record the presentation of the project by me
 
-- For non-technical/Business minded individuals: [non-technical_link](https://www.loom.com/share/1c7bc869038a49659108ea2960969911?sid=32d27a28-8a3e-4aa2-96bd-968f758183dd)
+- For non-technical/Business individuals: [Non-Technical_link](https://www.loom.com/share/1c7bc869038a49659108ea2960969911?sid=32d27a28-8a3e-4aa2-96bd-968f758183dd)
 
+- For technical individuals Part 1: [Technical_link-part_1](https://www.loom.com/share/827b737db93746448452e43c6ce2ca74?sid=7e3afbeb-d7d4-42fd-9763-f41938b5ba95)
+
+- For technical individuals Part 3: [Technical_link-part_2](https://www.loom.com/share/d213e7bccf51457593c9a4355ee7d810?sid=5a559587-e9f3-4e1b-b9d8-dd09fd35415a)
 
 ## Impact and Usefulness
 The pipeline provides a robust and automated way to gather, process, and analyze financial data from various markets, including stocks, forex, and cryptocurrencies. This data can be used by businesses and investors to make informed decisions based on real-time and historical market trends. The pipeline's automation reduces the time and effort required to gather and process this data, allowing businesses to focus more on analysis and decision-making.
