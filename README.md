@@ -6,6 +6,11 @@
 ## Project Overview
 This project involves the creation of an Extract, Load, Transform (ELT) data pipeline that fetches data from the Polygon Finance website using its API, loads it into a PostgreSQL database, transfers it to a Google Cloud Storage (GCS) bucket, and finally moves it to BigQuery, the analytical database. The entire pipeline is orchestrated with Airflow using the Celery executor on Docker-compose. The tasks are grouped into three categories: stock, forex, and crypto, each with three different workflows - extraction to PostgreSQL, upload to GCS, and upload to BigQuery
 
+## Project Presentation
+Do check out the below links that record the presentation of the project by me
+
+- For non-technical/Business minded individuals: [non-technical_link](https://www.loom.com/share/1c7bc869038a49659108ea2960969911?sid=32d27a28-8a3e-4aa2-96bd-968f758183dd)
+
 
 ## Impact and Usefulness
 The pipeline provides a robust and automated way to gather, process, and analyze financial data from various markets, including stocks, forex, and cryptocurrencies. This data can be used by businesses and investors to make informed decisions based on real-time and historical market trends. The pipeline's automation reduces the time and effort required to gather and process this data, allowing businesses to focus more on analysis and decision-making.
