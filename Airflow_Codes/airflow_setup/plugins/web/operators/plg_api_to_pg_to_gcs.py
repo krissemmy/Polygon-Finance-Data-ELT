@@ -36,16 +36,12 @@ class PolygonToPGOperator(BaseOperator):
         Service Account Token Creator IAM role to the directly preceding identity, with first
         account from the list granting this role to the originating account (templated).
     """
-    template_fields: Sequence[str] = (
-        "time"
-    )
 
 
     def  __init__(
 		self,
         *,
 		key: str,
-		#destination_path: Optional[str] = None,
         type_of_data: str,
         yesterday: datetime,
         table: str,
@@ -61,7 +57,6 @@ class PolygonToPGOperator(BaseOperator):
         self.yesterday = yesterday
         self.time = time
         self.endpoint = self._set_endpoint(self.type_of_data, self.yesterday)
-        #self.destination_path = self._set_destination_path(destination_path)
 
 
     def execute(self, context: Dict[str, Any]) -> None:
@@ -92,9 +87,6 @@ class PolygonToPGOperator(BaseOperator):
                          'l': 'lowest_price'
                         })
             self.log.info(f"Data contains {df.size} columns")
-
-            # file_name = self.destination_path
-            # df.to_csv(file_name, index=False)
 
             postgres_hook = PostgresHook(postgres_conn_id='postgres_default')
             post_con = postgres_hook.get_uri()

@@ -16,7 +16,6 @@ AIRFLOW_HOME = os.environ.get("AIRFLOW_HOME", "/opt/airflow/")
 PROJECT_ID = os.environ.get("GCP_PROJECT_ID")
 DESTINATION_BUCKET = os.environ.get("GCP_GCS_BUCKET")
 KEY = os.environ.get("POLYGON_API_KEY")
-# TYPE_OF_DATA = "stock"
 DATASET="finance"
 
 # Get the current date and time
@@ -28,11 +27,6 @@ one_day = timedelta(days=1)
 # Subtract one day from the current date and time
 yesterday_datetime = current_datetime - one_day
 YESTERDAY = yesterday_datetime.date()
-
-# DESTINATION_PATH = f'polygon_{TYPE_OF_DATA}_{YESTERDAY}.csv'
-# TABLE = f'polygon_{TYPE_OF_DATA}'
-# TIME = "{{ dag_run.logical_date.strftime('%Y-%m-%d') }}"
-TIME = "{{ dag_run.logical_date.strftime('%Y-%m-%d') }}"
 
 
 
@@ -72,7 +66,6 @@ with DAG(
             #destination_path=f'polygon_stock_{YESTERDAY}.csv',
             key=KEY,
             yesterday=YESTERDAY,
-            time=TIME,
         )
         extract_task_2 = PolygonToPGOperator(
             task_id=f"extract_forex_data_from_API_and_load_to_Postgres",
@@ -81,7 +74,6 @@ with DAG(
             #destination_path=f'polygon_forex_{YESTERDAY}.csv',
             key=KEY,
             yesterday=YESTERDAY,
-            time=TIME,
         )
         extract_task_3 = PolygonToPGOperator(
             task_id=f"extract_crypto_data_from_API_and_load_to_Postgres",
@@ -90,7 +82,6 @@ with DAG(
             #destination_path=f'polygon_crypto_{YESTERDAY}.csv',
             key=KEY,
             yesterday=YESTERDAY,
-            time=TIME,
         )
         [extract_task_1,extract_task_2,extract_task_3]
     with TaskGroup(
@@ -152,7 +143,7 @@ with DAG(
             source_format="NEWLINE_DELIMITED_JSON",
         )
         [load_gcs_to_bigquery_1, load_gcs_to_bigquery_2, load_gcs_to_bigquery_3]
-        
+
     trigger_job_run = DbtCloudRunJobOperator(
         task_id="trigger_job_run_for_Polygon_Finnce_data-Stock-Forex-Crypto",
         #dbt_cloud_conn_id = "eviction_dbt_job", 221209
