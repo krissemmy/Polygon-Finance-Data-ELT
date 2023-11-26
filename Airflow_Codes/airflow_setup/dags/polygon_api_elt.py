@@ -153,6 +153,14 @@ with DAG(
         )
         [load_gcs_to_bigquery_1, load_gcs_to_bigquery_2, load_gcs_to_bigquery_3]
         
+    trigger_job_run = DbtCloudRunJobOperator(
+        task_id="trigger_job_run_for_Polygon_Finnce_data-Stock-Forex-Crypto",
+        #dbt_cloud_conn_id = "eviction_dbt_job", 221209
+        job_id=462857,
+        check_interval=10,
+        timeout=300,
+    )
 
-    start >> extract_data_tasks >> get_data_tasks >> load_data_tasks
+    end = EmptyOperator(task_id="end")
 
+    start >> extract_data_tasks >> get_data_tasks >> load_data_tasks >> trigger_job_run >> end
