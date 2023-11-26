@@ -9,10 +9,8 @@ from airflow.providers.google.cloud.transfers.gcs_to_bigquery import GCSToBigQue
 from airflow.providers.google.cloud.transfers.postgres_to_gcs import PostgresToGCSOperator
 
 
-
+# Define environment variables and constants
 AIRFLOW_HOME = os.environ.get("AIRFLOW_HOME", "/opt/airflow/")
-
-
 PROJECT_ID = os.environ.get("GCP_PROJECT_ID")
 DESTINATION_BUCKET = os.environ.get("GCP_GCS_BUCKET")
 KEY = os.environ.get("POLYGON_API_KEY")
@@ -29,7 +27,7 @@ yesterday_datetime = current_datetime - one_day
 YESTERDAY = yesterday_datetime.date()
 
 
-
+# Define DAG default arguments
 DEFAULT_ARGS = {
     "owner": "airflow",
     "start_date": datetime(2023, 11, 20),
@@ -40,7 +38,7 @@ DEFAULT_ARGS = {
     "retry_delay": timedelta(minutes=1),
 }
 
-
+# Define the main DAG
 with DAG(
     dag_id="Load-Polygon-Finance-Data-From-API-To-PG-To-GCS-TO-BQ",
     description="Job to move data from Eviction website to Google Cloud Storage and then transfer from GCS to BigQuery, and finally create a data model using dbt",
@@ -53,7 +51,7 @@ with DAG(
 
     start = EmptyOperator(task_id="start")
 
-    # Create a TaskGroup for each tasks
+    # Create a TaskGroup for extracting data from different sources
     with TaskGroup(
         group_id="extract_data_tasks",
         tooltip= "Extract data tasks for different types") as extract_data_tasks:
@@ -84,6 +82,8 @@ with DAG(
             yesterday=YESTERDAY,
         )
         [extract_task_1,extract_task_2,extract_task_3]
+    
+    # Create a TaskGroup for transferring data from Postgres to GCS
     with TaskGroup(
         group_id="get_data_tasks",
         tooltip= "Get data tasks for different types") as get_data_tasks:
@@ -112,6 +112,8 @@ with DAG(
             gzip=False,
         )
         [get_data_1, get_data_2, get_data_3]
+    
+    # Create a TaskGroup for loading data from GCS to BigQuery
     with TaskGroup(
         group_id="load_data_tasks",
         tooltip= "Load data tasks for different types") as load_data_tasks:
@@ -144,6 +146,7 @@ with DAG(
         )
         [load_gcs_to_bigquery_1, load_gcs_to_bigquery_2, load_gcs_to_bigquery_3]
 
+    # Define a task to trigger a dbt job run
     trigger_job_run = DbtCloudRunJobOperator(
         task_id="trigger_job_run_for_Polygon_Finnce_data-Stock-Forex-Crypto",
         #dbt_cloud_conn_id = "eviction_dbt_job", 221209
@@ -153,5 +156,6 @@ with DAG(
     )
 
     end = EmptyOperator(task_id="end")
-
+    
+    # Set the task dependencies
     start >> extract_data_tasks >> get_data_tasks >> load_data_tasks >> trigger_job_run >> end
