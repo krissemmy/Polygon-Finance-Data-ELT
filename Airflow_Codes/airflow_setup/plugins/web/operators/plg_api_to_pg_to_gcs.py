@@ -1,6 +1,5 @@
 from typing import Any, Dict, Optional, Sequence, Union
 from datetime import datetime, timedelta
-import json
 import pandas as pd
 import requests
 from sqlalchemy import create_engine
