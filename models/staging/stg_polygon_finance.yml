@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: dbt_echristopher
+  - name: raw
     description: "Contains Polygon Finance data of Stock, Forex and Crypto data"
     tables:
       - name: stg_stock
