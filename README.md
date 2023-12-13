@@ -1,7 +1,19 @@
 # Welcome to my Polygon Finance ElT data pipeline project!
 
+![Add a heading (1)](https://github.com/krissemmy/Polygon-Finance-Data-ELT/assets/119800888/fd585f7a-e3db-4e44-93df-143d86924669)
+
+
 ## Project Overview
-This project involves the creation of an Extract, Load, Transform (ELT) data pipeline that fetches data from the Polygon Finance website using its API, loads it into a PostgreSQL database, transfers it to a Google Cloud Storage (GCS) bucket, and finally moves it to BigQuery, the analytical database. The entire pipeline is orchestrated with Airflow using the Celery executor on Docker-compose. The tasks are grouped into three categories: stock, forex, and crypto, each with three different workflows - extraction to PostgreSQL, upload to GCS, and upload to BigQuery
+This project involves the creation of an Extract, Load, Transform (ELT) data pipeline that fetches data from the [Polygon Finance website](https://polygon.io/docs/stocks/get_v2_aggs_grouped_locale_us_market_stocks__date) using its API, loads it into a PostgreSQL database, transfers it to a Google Cloud Storage (GCS) bucket, and finally moves it to BigQuery, the analytical database. The entire pipeline is orchestrated with Airflow using the Celery executor on Docker-compose. The tasks are grouped into three categories: stock, forex, and crypto, each with three different workflows - extraction to PostgreSQL, upload to GCS, and upload to BigQuery. in addition,How to load data from Polygon Stock API to PostgreSQL destination is found [here](https://airbyte.com/how-to-sync/polygon-stock-api-to-postgresql-destination)
+
+## Project Presentation
+Do check out the below links that record the presentation of the project by me
+
+- For non-technical/Business individuals: [Non-Technical_link](https://www.loom.com/share/1c7bc869038a49659108ea2960969911?sid=32d27a28-8a3e-4aa2-96bd-968f758183dd)
+
+- For technical individuals Part 1: [Technical_link-part_1](https://www.loom.com/share/827b737db93746448452e43c6ce2ca74?sid=7e3afbeb-d7d4-42fd-9763-f41938b5ba95)
+
+- For technical individuals Part 3: [Technical_link-part_2](https://www.loom.com/share/d213e7bccf51457593c9a4355ee7d810?sid=5a559587-e9f3-4e1b-b9d8-dd09fd35415a)
 
 ## Impact and Usefulness
 The pipeline provides a robust and automated way to gather, process, and analyze financial data from various markets, including stocks, forex, and cryptocurrencies. This data can be used by businesses and investors to make informed decisions based on real-time and historical market trends. The pipeline's automation reduces the time and effort required to gather and process this data, allowing businesses to focus more on analysis and decision-making.
